@@ -31,6 +31,6 @@ jobs:
             -Dsonar.projectKey=secondtest
             
       - name: SonarQube Quality Gate check
-        id: testing
+        id: Sonar way
         uses: sonarsource/sonarqube-quality-gate-action@master
 
