@@ -2,7 +2,7 @@ name: CI/CD workflow for Sonar Code scan and Quality gate check
 on:
   pull_request:
     branches:
-      - main
+      - master
       - 'TA_INT'
     types: [opened, synchronize, reopened, review_requested]
   workflow_dispatch:
@@ -18,14 +18,14 @@ jobs:
       with:
         projectBaseDir: .
         args: >
-          -Dsonar.projectKey=gbs-crnr-SystmTm-enrollment-tests
+          -Dsonar.projectKey=secondtest
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}  # Needed to get PR information
     # Check the Quality Gate status.
     - name: SonarQube Quality Gate check
-      id: Cigna way - Bronze
+      id: testing
       uses: sonarsource/sonarqube-quality-gate-action@master
       # Force to fail step after specific time.
       timeout-minutes: 5
